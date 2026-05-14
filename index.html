@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Viyaaraa Global Ventures</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      height: 100%;
+    }
+
+    body {
+      min-height: 100%;
+      margin: 0;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      background: #000000;
+      color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    @keyframes reveal-rise {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 18px, 0);
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      animation-name: reveal-rise;
+      animation-duration: 1.425s;
+      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      animation-fill-mode: both;
+      animation-delay: 0s;
+    }
+
+    .header.reveal {
+      animation-delay: 0s;
+    }
+
+    .hero > .reveal:nth-child(1) {
+      animation-delay: 0.12s;
+    }
+
+    .hero > .reveal:nth-child(2) {
+      animation-delay: 0.24s;
+    }
+
+    .hero > .reveal:nth-child(3) {
+      animation-delay: 0.36s;
+    }
+
+    .hero > .reveal:nth-child(4) {
+      animation-delay: 0.48s;
+    }
+
+    .hero > .reveal:nth-child(5) {
+      animation-delay: 0.6s;
+    }
+
+    .footer.reveal {
+      animation-delay: 0.72s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .page {
+      --page-gutter: clamp(1.25rem, 4vw, 2.5rem);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(ellipse 80% 55% at 50% 42%, rgba(255, 255, 255, 0.04) 0%, transparent 55%),
+        #0a0a0a;
+    }
+
+    .header {
+      flex-shrink: 0;
+      width: 100%;
+      padding: 0.8125rem var(--page-gutter);
+      text-align: left;
+      background: #000000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .header__brand-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .header__brand-glow {
+      position: absolute;
+      inset: -14px -20px -14px -24px;
+      background: radial-gradient(
+        ellipse 100% 120% at 15% 50%,
+        rgba(255, 255, 255, 0.11) 0%,
+        transparent 68%
+      );
+      filter: blur(14px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .header__brand {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      margin: 0;
+      font-size: calc(0.75rem * 1.15 * 1.1);
+      font-weight: 700;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .hero {
+      flex: 1;
+      width: 100%;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: clamp(2rem, 6vw, 4rem) var(--page-gutter);
+      padding-bottom: clamp(5rem, 14vh, 9rem);
+      gap: clamp(1.5rem, 3vw, 2.25rem);
+    }
+
+    .hero__badge-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero__badge-glow {
+      position: absolute;
+      inset: -18px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+
+    .hero__badge {
+      position: relative;
+      display: inline-block;
+      padding: 0.45rem 1.35rem;
+      font-size: 0.625rem;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #d4d4d4;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .hero__title {
+      max-width: 18ch;
+      margin-inline: auto;
+      font-size: clamp(1.875rem, 5.5vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+
+    .hero__sub {
+      max-width: 28ch;
+      margin-inline: auto;
+      font-size: clamp(1rem, 2.2vw, 1.1875rem);
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0.02em;
+      color: #888888;
+    }
+
+    .hero__media {
+      width: 100%;
+      max-width: 68rem;
+      margin-inline: auto;
+      margin-top: clamp(0.5rem, 2vw, 1rem);
+      padding-top: clamp(2.25rem, 5vw, 3.75rem);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      text-align: center;
+    }
+
+    .hero__media-heading {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      font-size: 0.625rem;
+      font-weight: 500;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: #b0b0b0;
+      margin-bottom: clamp(2rem, 4.5vw, 3.25rem);
+      text-align: center;
+    }
+
+    .hero__media-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(2rem, 5vw, 4.5rem);
+      text-align: left;
+    }
+
+    .hero__media-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+
+    .hero__media-label {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      font-size: 0.5625rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #d8d8d8;
+    }
+
+    .hero__media-desc {
+      font-family: "EB Garamond", Garamond, "Times New Roman", serif;
+      font-size: clamp(1.0625rem, 1.35vw, 1.1875rem);
+      font-weight: 400;
+      line-height: 1.58;
+      letter-spacing: 0.01em;
+      color: #9a9a9a;
+    }
+
+    @media (max-width: 768px) {
+      .hero__media-grid {
+        grid-template-columns: 1fr;
+        gap: clamp(1.75rem, 4vw, 2.5rem);
+        max-width: 32rem;
+        margin-inline: auto;
+      }
+    }
+
+    .hero__cta-wrap {
+      position: relative;
+      margin-top: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero__cta-glow {
+      position: absolute;
+      inset: -28px -40px;
+      background: radial-gradient(ellipse 65% 80% at 50% 50%, rgba(255, 255, 255, 0.14) 0%, transparent 65%);
+      filter: blur(20px);
+      pointer-events: none;
+    }
+
+    .hero__cta {
+      position: relative;
+      display: inline-block;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 9999px;
+      padding: 1.05rem 3.25rem;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: #ffffff;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 45%, #080808 100%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -12px 24px rgba(0, 0, 0, 0.45),
+        0 4px 24px rgba(0, 0, 0, 0.5);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .hero__cta:visited {
+      color: #ffffff;
+    }
+
+    .hero__cta:hover {
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -12px 24px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 8px 32px rgba(0, 0, 0, 0.55);
+    }
+
+    .hero__cta:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.5);
+      outline-offset: 4px;
+    }
+
+    .hero__cta:active {
+      transform: translateY(1px);
+    }
+
+    .footer {
+      flex-shrink: 0;
+      width: 100%;
+      margin-top: clamp(1.5rem, 4vh, 2.75rem);
+      padding: clamp(1.5rem, 4vh, 2.5rem) var(--page-gutter) clamp(1.75rem, 4vw, 2.5rem);
+      text-align: center;
+      background: #000000;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .footer__line {
+      margin: 0 auto;
+      max-width: 52rem;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      font-size: 0.625rem;
+      font-weight: 400;
+      line-height: 1.65;
+      letter-spacing: 0.04em;
+      color: #7d7d7d;
+    }
+
+    .footer__line--msme {
+      margin-top: 0.5rem;
+      margin-inline: auto;
+      max-width: 52rem;
+      font-size: 0.5625rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header reveal">
+      <div class="header__brand-wrap">
+        <span class="header__brand-glow" aria-hidden="true"></span>
+        <p class="header__brand">VIYAARAA GLOBAL VENTURES</p>
+      </div>
+    </header>
+
+    <main class="hero">
+      <div class="hero__badge-wrap reveal" aria-hidden="true">
+        <span class="hero__badge-glow"></span>
+        <span class="hero__badge">Coming Soon</span>
+      </div>
+
+      <h1 class="hero__title reveal">The Confluence of Life and Excellence.</h1>
+      <p class="hero__sub reveal">Where vision meets execution.</p>
+
+      <section class="hero__media reveal" aria-labelledby="media-house-heading">
+        <h2 class="hero__media-heading" id="media-house-heading">Modern Media &amp; Publication House</h2>
+        <div class="hero__media-grid">
+          <article class="hero__media-col">
+            <h3 class="hero__media-label">Publication Design</h3>
+            <p class="hero__media-desc">
+              Crafting and publishing high-end literary works and physical books.
+            </p>
+          </article>
+          <article class="hero__media-col">
+            <h3 class="hero__media-label">Digital Periodicals</h3>
+            <p class="hero__media-desc">
+              Curating premium e-magazines and web-based journals.
+            </p>
+          </article>
+          <article class="hero__media-col">
+            <h3 class="hero__media-label">Digital Architecture</h3>
+            <p class="hero__media-desc">
+              Designing professional, ‘statesman-level’ websites and media platforms.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <div class="hero__cta-wrap reveal">
+        <span class="hero__cta-glow" aria-hidden="true"></span>
+        <a href="mailto:viyaaraaglobalventures@anvaraa.com" class="hero__cta">Viyaraa</a>
+      </div>
+    </main>
+
+    <footer class="footer reveal">
+      <p class="footer__line">
+        &copy; 2026 All Rights Reserved. Viyaraa | A unit of VIYAARAA GLOBAL VENTURES
+      </p>
+      <p class="footer__line footer__line--msme">REGISTERED MSME, GOVERNMENT OF INDIA</p>
+    </footer>
+  </div>
+</body>
+</html>
