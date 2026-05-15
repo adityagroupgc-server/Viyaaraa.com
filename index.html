@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="top">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Viyaaraa Global Ventures</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *,
     *::before,
@@ -18,6 +18,7 @@
 
     html {
       height: 100%;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -88,37 +89,55 @@
 
     .page {
       --page-gutter: clamp(1.25rem, 4vw, 2.5rem);
+      --header-height: clamp(3.25rem, 8vh, 4rem);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      padding-top: var(--header-height);
       background:
         radial-gradient(ellipse 80% 55% at 50% 42%, rgba(255, 255, 255, 0.04) 0%, transparent 55%),
         #0a0a0a;
     }
 
     .header {
-      flex-shrink: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
       width: 100%;
       padding: 0.8125rem var(--page-gutter);
       text-align: left;
-      background: #000000;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .header__brand-wrap {
+    .header__brand-link {
       position: relative;
       display: inline-block;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .header__brand-link:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.45);
+      outline-offset: 4px;
+      border-radius: 2px;
     }
 
     .header__brand-glow {
       position: absolute;
-      inset: -14px -20px -14px -24px;
+      inset: -22px -32px -22px -36px;
       background: radial-gradient(
-        ellipse 100% 120% at 15% 50%,
-        rgba(255, 255, 255, 0.11) 0%,
-        transparent 68%
+        ellipse 120% 150% at 18% 50%,
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0.07) 38%,
+        transparent 72%
       );
-      filter: blur(14px);
+      filter: blur(22px);
       pointer-events: none;
       z-index: 0;
     }
@@ -128,8 +147,8 @@
       z-index: 1;
       display: inline-block;
       margin: 0;
-      font-size: calc(0.75rem * 1.15 * 1.1);
-      font-weight: 700;
+      font-size: calc(0.75rem * 1.15 * 1.1 * 1.1);
+      font-weight: 735;
       letter-spacing: 0.36em;
       text-transform: uppercase;
       color: #ffffff;
@@ -353,10 +372,10 @@
 <body>
   <div class="page">
     <header class="header reveal">
-      <div class="header__brand-wrap">
+      <a href="#top" class="header__brand-link" aria-label="Back to top">
         <span class="header__brand-glow" aria-hidden="true"></span>
-        <p class="header__brand">VIYAARAA GLOBAL VENTURES</p>
-      </div>
+        <span class="header__brand">VIYAARAA GLOBAL VENTURE</span>
+      </a>
     </header>
 
     <main class="hero">
