@@ -1,0 +1,5 @@
+# https://www.viyaaraa.com/robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://www.viyaaraa.com/sitemap.xml
