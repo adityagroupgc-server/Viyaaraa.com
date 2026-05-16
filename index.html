@@ -291,31 +291,28 @@
 }
 
 .top-logo-media {
-  height: 34px; /* Crisp, statesman-level vertical proportions */
+  height: 52px; /* Upscaled significantly so the fine details are crisp and visible */
   width: auto;
   display: block;
   opacity: 0;
   
-  /* Initializing hardware-accelerated filters for a smooth reveal */
-  will-change: filter, opacity; 
-  animation: logoMaturate 2.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: 0.15s;
+  /* The Secret Weapon: Flips colors and completely vanishes the background box */
+  filter: invert(1);
+  mix-blend-mode: screen;
+  
+  will-change: opacity, transform; 
+  animation: logoMaturate 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.2s;
 }
 
-/* Premium Reveal Animation: Materializes softly from background depth */
+/* Stable, Glitch-Free Reveal Animation */
 @keyframes logoMaturate {
   0% {
     opacity: 0;
-    filter: invert(1) blur(8px) drop-shadow(0 0 0px rgba(255, 255, 255, 0));
-    transform: scale(0.94);
-  }
-  50% {
-    opacity: 0.5;
-    filter: invert(1) blur(2px) drop-shadow(0 0 12px rgba(255, 255, 255, 0.18));
+    transform: scale(0.96);
   }
   100% {
     opacity: 1;
-    filter: invert(1) blur(0px) drop-shadow(0 0 24px rgba(255, 255, 255, 0.32));
     transform: scale(1);
   }
 }
