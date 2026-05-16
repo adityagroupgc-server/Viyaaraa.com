@@ -277,8 +277,46 @@
         0 0 8px rgba(255, 255, 255, 0.45),
         0 0 20px rgba(255, 255, 255, 0.28),
         0 0 40px rgba(255, 255, 255, 0.14),
-        0 0 64px rgba(255, 255, 255, 0.08);
-    }
+
+ /* Independent Center-Aligned Top Logo Configuration */
+.top-logo-container {
+  position: fixed;
+  top: 0.75rem; /* Vertically balances with your left header text */
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  z-index: 150; /* Ensures it sits over the glassmorphic header backdrop */
+  pointer-events: none; /* Prevents any accidental cursor click blocking */
+}
+
+.top-logo-media {
+  height: 34px; /* Crisp, statesman-level vertical proportions */
+  width: auto;
+  display: block;
+  opacity: 0;
+  
+  /* Initializing hardware-accelerated filters for a smooth reveal */
+  will-change: filter, opacity; 
+  animation: logoMaturate 2.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.15s;
+}
+
+/* Premium Reveal Animation: Materializes softly from background depth */
+@keyframes logoMaturate {
+  0% {
+    opacity: 0;
+    filter: invert(1) blur(8px) drop-shadow(0 0 0px rgba(255, 255, 255, 0));
+    transform: scale(0.94);
+  }
+  50% {
+    opacity: 0.5;
+    filter: invert(1) blur(2px) drop-shadow(0 0 12px rgba(255, 255, 255, 0.18));
+  }
+  100% {
+    opacity: 1;
+    filter: invert(1) blur(0px) drop-shadow(0 0 24px rgba(255, 255, 255, 0.32));
+    transform: scale(1);
+  }
+}
 
     .hero {
       flex: 1;
@@ -495,7 +533,9 @@
     }
   </style>
 </head>
-<body>
+<body><div class="top-logo-container">
+  <img src="assets/viyaraa-logo.png" class="top-logo-media" alt="Viyaaraa Logo">
+</div>
   <div class="page">
     <header class="header reveal">
       <a href="#top" class="header__brand-link" aria-label="Back to top">
