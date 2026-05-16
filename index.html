@@ -281,13 +281,18 @@
     }
 
  /* Independent Center-Aligned Top Logo Configuration */
+/* Independent Center-Aligned Top Logo Configuration */
 .top-logo-container {
   position: fixed;
-  top: 0.75rem; /* Vertically balances with your left header text */
+  top: 0.85rem; /* Vertically balances with your left header text */
   left: 50%;
   transform: translate3d(-50%, 0, 0);
-  z-index: 150; /* Ensures it sits over the glassmorphic header backdrop */
-  pointer-events: none; /* Prevents any accidental cursor click blocking */
+  z-index: 150; /* Sits cleanly over the blurred header backdrop */
+  pointer-events: none;
+
+  /* MOVED HERE: Forces the entire fixed element to blend with the website background */
+  filter: invert(1);
+  mix-blend-mode: screen;
 }
 
 .top-logo-media {
@@ -295,10 +300,6 @@
   width: auto;
   display: block;
   opacity: 0;
-  
-  /* The Secret Weapon: Flips colors and completely vanishes the background box */
-  filter: invert(1);
-  mix-blend-mode: screen;
   
   will-change: opacity, transform; 
   animation: logoMaturate 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
